@@ -58,7 +58,6 @@ function checkLetters(letter){
         }
    
       /*  else{
-
             isLetterInWord = false;
             alert("letter not found");
         }
@@ -68,14 +67,15 @@ function checkLetters(letter){
     console.log("before "+blanksAndSuccesses);
     //check where is the letter in word and populate a new array
     if (isLetterInWord){
-        for (var i=0; i<numBlanks; i++)
+        for (var i=0; i<=numBlanks; i++)
         {   
             if(selectedWord[i]==letter){
                 blanksAndSuccesses[i]= letter;
+                document.getElementById("word-blanks").innerHTML = blanksAndSuccesses;
             }
         }
 
-        document.getElementById("word-blanks").innerHTML = blanksAndSuccesses;
+       // document.getElementById("word-blanks").innerHTML = blanksAndSuccesses;
     }
     else{
         wrongLetters.push(letter);
@@ -106,6 +106,7 @@ function roundComplete(){
         //alert("inside the first if statement");
         if (lettersinWord.toString() === blanksAndSuccesses.toString() )
         {
+            document.getElementById("word-blanks").innerHTML = selectedWord;//blanksAndSuccesses;
             //alert("inside the 2nd if statement");
             winCount ++;
             alert("you win!");
@@ -121,7 +122,8 @@ function roundComplete(){
         lossCount ++;
         alert("You lost!");
         console.log("you lost");
-
+        wrongLetters =[];
+        document.getElementById("wrong-guesses").innerHTML = wrongLetters;
         document.getElementById("loss-counter").innerHTML = lossCount;
         startGame();
 
